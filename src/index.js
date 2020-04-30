@@ -1,8 +1,17 @@
-import LoginButton from "./js/components/login-controls.js"
-import MenuButton from "./js/components/header-menu-button.js"
-import CartButton from "./js/components/header-cart-button.js"
-import InventoryList from "./js/components/inventory-list.js"
-import InventoryItem from "./js/components/inventory-item.js"
-import CartContents from "./js/components/cart-contents.js"
-import CheckoutInfo from "./js/components/checkout-info.js"
-import CheckoutSummary from "./js/components/checkout-summary.js"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
