@@ -1,11 +1,16 @@
 import React from 'react'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import cartIcon from './../img/cart-2.svg';
+import { Navbar, Nav } from 'react-bootstrap';
 
 class AppFooter extends React.Component {
   render() {
     return (
-      <Navbar sticky="bottom" >Footer</Navbar>
+      <Navbar sticky="bottom" >
+        <Nav className="mr-auto">
+          <Nav.Item>
+            <Nav.Link href="#/contact">Contact</Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </Navbar>
     )
   }
 }

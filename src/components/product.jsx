@@ -38,7 +38,7 @@ export default class Product extends React.Component {
 
     if (Credentials.isProblemUser()) {
       // Bail out now, don't add to cart if the item ID is odd
-      if (itemId % 2 == 1) {
+      if (itemId % 2 === 1) {
         return;
       }
     }
@@ -52,7 +52,7 @@ export default class Product extends React.Component {
 
     if (Credentials.isProblemUser()) {
       // Bail out now, don't remove from cart if the item ID is even
-      if (itemId % 2 == 0) {
+      if (itemId % 2 === 0) {
         return;
       }
     }
@@ -67,7 +67,7 @@ export default class Product extends React.Component {
       <div className="inventory_details">
         <button className="inventory_details_back_button" onClick={this.goBack}>&lt;- Back</button>
         <div className="inventory_details_container">
-          <img className="inventory_details_img" src={this.item.image_url} />
+          <img className="inventory_details_img" src={this.item.image_url} alt={this.item.name} />
           <div className="inventory_details_desc_container">
             <div className="inventory_details_name">{this.item.name}</div>
             <div className="inventory_details_desc">{this.item.desc}</div>

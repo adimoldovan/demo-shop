@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { InventoryData } from '../data/inventory-data';
 import { Credentials } from './credentials';
-import { ShoppingCart } from './shopping-cart';
 import ProductItem from './product-item'
 
-export default class Products extends React.Component {
+export default class Products extends Component {
   constructor(props) {
     super(props);
 

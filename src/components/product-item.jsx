@@ -25,7 +25,7 @@ export default class ProductItem extends React.Component {
 
     if (Credentials.isProblemUser()) {
       // Bail out now, don't add to cart if the item ID is odd
-      if (itemId % 2 == 1) {
+      if (itemId % 2 === 1) {
         return;
       }
     }
@@ -39,7 +39,7 @@ export default class ProductItem extends React.Component {
 
     if (Credentials.isProblemUser()) {
       // Bail out now, don't remove from cart if the item ID is even
-      if (itemId % 2 == 0) {
+      if (itemId % 2 === 0) {
         return;
       }
     }
@@ -55,13 +55,13 @@ export default class ProductItem extends React.Component {
     if (Credentials.isProblemUser()) {
       linkId += 1;
     }
-    var itemLink = `./product/${linkId}`;
+    var itemLink = `#/product/${linkId}`;
     var img_url = `./../img/products/${this.state.image_url}`;
     return (
       <div className="inventory_item">
         <div className="inventory_item_img">
           <a href={itemLink} id={`item_${this.state.id}_img_link`}>
-            <img className="inventory_item_img" src={img_url} />
+            <img className="inventory_item_img" src={img_url} alt={this.state.name} />
           </a>
         </div>
         <div className="inventory_item_label">

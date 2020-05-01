@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Credentials } from './credentials.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { Credentials } from './credentials.jsx';
 
-class CheckoutInfo extends Component {
+export default class CheckoutInfo extends Component {
 
   constructor(props) {
     super(props);
@@ -67,7 +64,7 @@ class CheckoutInfo extends Component {
     }
 
     // If we're here, we have our required info. Redirect!
-    window.location.href = './checkout-step-two.html';
+    window.location.href = '#/checkout-summary';
 
     return '';
   }
@@ -87,17 +84,11 @@ class CheckoutInfo extends Component {
             <input id="postal-code" type="text" className="form_input" data-test="postalCode" placeholder="Zip/Postal Code" value={this.state.postalCode} onChange={this.handlePostalCodeChange} autoCorrect="off" autoCapitalize="none" />
           </div>
           <div className="checkout_buttons">
-            <a className="cart_cancel_link btn_secondary" href="./cart.html">CANCEL</a>
+            <a className="cart_cancel_link btn_secondary" href="#/cart">CANCEL</a>
             <input className="btn_primary cart_button" type="submit" value="CONTINUE" />
-
           </div>
         </form>
       </div>
     );
   }
 }
-
-export default CheckoutInfo;
-
-const domContainer = document.getElementById('checkout_info_container');
-domContainer ? ReactDOM.render(<CheckoutInfo />, domContainer) : false;
