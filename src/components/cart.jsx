@@ -15,8 +15,13 @@ export default class Cart extends Component {
   }
 
   render() {
+    var products = ShoppingCart.getCartContents();
+    var orderTotal = 0;
 
-    var contents = ShoppingCart.getCartContents();
+    for (var productId in products) {
+      orderTotal = orderTotal + InventoryData.ITEMS[productId].price;
+    }
+    var orderTax = (orderTotal * 0.05).toFixed(2);
 
     return (
       <div>
@@ -24,15 +29,22 @@ export default class Cart extends Component {
         <Container>
           <Row xs={1} sm={1} md={1} lg={1} xl={1}>
             <Col>
-              {contents.map((item, i) => {
+              {Object.keys(products).map((item, i) => {
                 return (<CartItem key={i} item={InventoryData.ITEMS[item]} />)
               })}
             </Col>
           </Row>
-          <Row style={{float:"right", margin:"10px"}} >
-            <Button style={{marginRight:"10px"}} variant="danger" href="#/products"><FontAwesomeIcon icon={faAngleLeft} /> Continue Shopping</Button>
+          <div style={{ textAlign: "right", margin: "10px" }} >
+
+            <div>Items total: <span className="amount">${orderTotal}</span></div>
+            <div>Taxes: <span className="amount">${orderTax}</span></div>
+            <div className="amount-total">Total: <span className="amount">${(orderTotal + parseFloat(orderTax)).toFixed(2)}</span></div>
+
+          </div>
+          <div style={{ textAlign: "right", margin: "10px" }} >
+            <Button style={{ marginRight: "10px" }} variant="danger" href="#/products"><FontAwesomeIcon icon={faAngleLeft} /> Continue Shopping</Button>
             <Button variant="success" href="#/checkout-info"><FontAwesomeIcon icon={faAngleRight} /> Checkout</Button>
-          </Row>
+          </div>
         </Container>
       </div>
     );

@@ -22,18 +22,18 @@ export default class CheckoutSummary extends Component {
 
   render() {
 
-    var contents = ShoppingCart.getCartContents();
+    var products = ShoppingCart.getCartContents();
     var orderTotal = 0;
 
-    for (var curItem in contents) {
-      orderTotal = orderTotal + InventoryData.ITEMS[contents[curItem]].price;
+    for (var productId in products) {
+      orderTotal = orderTotal + InventoryData.ITEMS[productId].price;
       if (Credentials.isProblemUser()) {
         // double up for the problem user
-        orderTotal = orderTotal + InventoryData.ITEMS[contents[curItem]].price;
+        orderTotal = orderTotal + InventoryData.ITEMS[productId].price;
       }
     }
 
-    var orderTax = (orderTotal * 0.08).toFixed(2);
+    var orderTax = (orderTotal * 0.05).toFixed(2);
 
     return (
       <div>
@@ -47,9 +47,9 @@ export default class CheckoutSummary extends Component {
               <div>CHOO CHOO DELIVERY!</div>
             </Col>
             <Col>
-              <div>Item total: ${orderTotal}</div>
-              <div>Tax: ${orderTax}</div>
-              <div>Total: ${(orderTotal + parseFloat(orderTax)).toFixed(2)}</div>
+              <div> Items total: <span className="amount">${orderTotal}</span></div>
+              <div>Taxes: <span className="amount">${orderTax}</span></div>
+              <div className="amount-total">Total: <span className="amount">${(orderTotal + parseFloat(orderTax)).toFixed(2)}</span></div>
             </Col>
           </Row>
           <Row style={{ float: "right", margin: "10px" }} >
@@ -57,7 +57,7 @@ export default class CheckoutSummary extends Component {
             <Button variant="success" href="#/checkout-complete"><FontAwesomeIcon icon={faAngleRight} /> Complete your order</Button>
           </Row>
         </Container>
-      </div>
+      </div >
     );
   }
 }

@@ -17,7 +17,7 @@ export default class ProductItem extends React.Component {
       desc: props.desc,
       price: props.price,
       // Set our initial state now
-      itemInCart: ShoppingCart.isItemInCart(props.id)
+      itemInCart: ShoppingCart.isProductInCart(props.id)
     };
 
     if (Credentials.isProblemUser()) {
@@ -34,7 +34,7 @@ export default class ProductItem extends React.Component {
       }
     }
 
-    ShoppingCart.addItem(itemId);
+    ShoppingCart.addProduct(itemId);
     this.setState({ itemInCart: true });
     console.log(ShoppingCart.getCartContents());
   }

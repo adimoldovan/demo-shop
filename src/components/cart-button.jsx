@@ -12,10 +12,10 @@ export default class CartButton extends Component {
   render() {
 
     var cartBadge = "";
-    var cartContents = ShoppingCart.getCartContents();
+    var noOfProducts = ShoppingCart.getNumberOfProducts();
 
-    if (cartContents.length > 0) {
-      cartBadge = <span className="fa-layers-counter shopping_cart_badge">{cartContents.length}</span>;
+    if (noOfProducts > 0) {
+      cartBadge = <span className="fa-layers-counter shopping_cart_badge">{noOfProducts}</span>;
     }
 
     return (

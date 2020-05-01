@@ -8,7 +8,6 @@ html {
 
 .brand-logo {
     color: #3aa755e3;
-    height: 50px;
 }
 
 .shopping-cart-icon {
@@ -60,4 +59,12 @@ input {
 
 .error {
     color: red;
+}
+
+.amount {
+    font-weight: bold;
+}
+
+.amount-total {
+    font-size: 1.3em;
 }

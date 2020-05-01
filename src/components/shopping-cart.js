@@ -1,49 +1,81 @@
+const CART_KEY = 'cart-contents';
+
 export class ShoppingCart {
-
-  static addItem(itemId) {
-    // pull out our current cart contents
+  static addProduct(id) {
     var curContents = ShoppingCart.getCartContents();
 
-    if (curContents.indexOf(itemId) < 0) {
-      // Item's not yet present - add it now
-      curContents.push(itemId);
+    if (ShoppingCart.isProductInCart(id)) {
+      var currentQty = curContents[id]
+      curContents[id] = currentQty + 1
+    } else {
+      curContents[id] = 1
+    }
 
-      // We modified our cart, so store it now
-      ShoppingCart.setCartContents(curContents);
+    ShoppingCart.setCartContents(curContents);
+  }
+
+  static removeProduct(id) {
+    var curContents = ShoppingCart.getCartContents();
+
+    if (ShoppingCart.isProductInCart(id)) {
+      delete curContents[id]
+    }
+
+    ShoppingCart.setCartContents(curContents);
+  }
+
+  static increaseQty(id) {
+    if (ShoppingCart.isProductInCart(id)) {
+      ShoppingCart.addProduct(id);
     }
   }
 
-  static removeItem(itemId) {
-    // pull out our current cart contents
+  static decreaseQty(id) {
     var curContents = ShoppingCart.getCartContents();
-    var itemIndex = curContents.indexOf(itemId);
 
-    if (itemIndex >= 0) {
-      // Remove this item from the array
-      curContents.splice(itemIndex, 1);
+    if (ShoppingCart.isProductInCart(id)) {
+      var currentQty = curContents[id]
+      curContents[id] = currentQty - 1
 
-      // We modified our cart, so store it now
-      ShoppingCart.setCartContents(curContents);
+      if (curContents[id] == 0) {
+        delete curContents[id]
+      }
     }
+    ShoppingCart.setCartContents(curContents);
   }
 
-  static isItemInCart(itemId) {
-    // pull out our current cart contents
+  static isProductInCart(id) {
     var curContents = ShoppingCart.getCartContents();
-    
-    // If the item is in the array, return true
-    return (curContents.indexOf(itemId) >= 0);
+    return (curContents[id] != undefined);
+  }
+
+  static getNumberOfProducts() {
+    var curContents = ShoppingCart.getCartContents();
+    var totalQty = 0;
+    Object.keys(curContents).map(function (key) {
+      totalQty = totalQty + curContents[key];
+    });
+    console.log(totalQty)
+    return totalQty
+  }
+
+  static getItemQuantity(id) {
+    var curContents = ShoppingCart.getCartContents();
+    var qty = 0;
+    if (ShoppingCart.isProductInCart(id)) {
+      qty = curContents[id];
+    }
+
+    console.log("Qty for product " + id + ": " + qty)
+    return qty;
   }
 
   static getCartContents() {
-    // pull out our current cart contents
-    var curContents = window.sessionStorage.getItem('cart-contents');
+    var curContents = window.sessionStorage.getItem(CART_KEY);
 
-    // Make an empty list if this is the first item
     if (curContents == null) {
-      curContents = [];
+      curContents = {};
     } else {
-      // We have an existing cart, so deserialize it now since localStorage stores in JSON strings
       curContents = JSON.parse(curContents);
     }
 
@@ -51,8 +83,8 @@ export class ShoppingCart {
   }
 
   static setCartContents(newContents) {
-    window.sessionStorage.setItem('cart-contents', JSON.stringify(newContents));
-    
+    window.sessionStorage.setItem(CART_KEY, JSON.stringify(newContents));
+
     // Notify our listeners
     ShoppingCart.LISTENERS.forEach((curListener) => {
       curListener.forceUpdate();
@@ -60,8 +92,8 @@ export class ShoppingCart {
   }
 
   static resetCart() {
-    window.sessionStorage.removeItem('cart-contents');
-    
+    window.sessionStorage.removeItem(CART_KEY);
+
     // Notify our listeners
     ShoppingCart.LISTENERS.forEach((curListener) => {
       curListener.forceUpdate();

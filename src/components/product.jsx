@@ -15,44 +15,37 @@ export default class Product extends React.Component {
     super(props);
     const { params } = this.props.match
 
-    var inventoryId = -1;
-    inventoryId = params.id
-
-    if ((inventoryId >= 0) && (InventoryData.ITEMS.length > inventoryId)) {
-      this.item = InventoryData.ITEMS[inventoryId];
+    if ((params.id >= 0) && (InventoryData.ITEMS.length > params.id)) {
+      this.item = InventoryData.ITEMS[params.id];
     } else {
       this.item = {
         name: 'PRODUCT NOT FOUND',
-        desc: '',
-        image_url: './img/product-not-found.jpg',
-        price: ''
+        desc: '-',
+        price: '-'
 
       };
     }
-    this.item.id = inventoryId;
+    this.item.id = params.id;
 
     this.state = {
       // Set our initial state now
-      itemInCart: ShoppingCart.isItemInCart(inventoryId)
+      itemInCart: ShoppingCart.isProductInCart(this.item.id)
     };
   }
 
-  goBack() {
-    window.history.back();
-  }
-
-  addToCart(itemId) {
-
+  addToCart() {
     if (Credentials.isProblemUser()) {
       // Bail out now, don't add to cart if the item ID is odd
-      if (itemId % 2 === 1) {
+      if (this.item.id % 2 === 1) {
         return;
       }
     }
 
-    ShoppingCart.addItem(itemId);
-    this.setState({ itemInCart: true });
-    console.log(ShoppingCart.getCartContents());
+    ShoppingCart.addProduct(this.item.id);
+  }
+
+  addToWishlist() {
+
   }
 
   render() {
@@ -74,7 +67,7 @@ export default class Product extends React.Component {
             </Col>
             <Col className="col col-lg-2 text-center">
               <p style={priceStyle}>{this.item.price} EUR</p>
-              <Button variant="link" onClick={() => this.addToCart(this.state.id)}><FontAwesomeIcon icon={faCartPlus} size="3x" color="#3aa755e3" /></Button>
+              <Button variant="link" onClick={() => this.addToCart(this.item.id)}><FontAwesomeIcon icon={faCartPlus} size="3x" color="#3aa755e3" /></Button>
               <Button variant="link" bottom="true" onClick={() => this.addToWishlist(this.state.id)}><FontAwesomeIcon icon={faHeart} size="3x" color="#1551d1e3" /></Button>
               <p><small>in stock</small></p>
             </Col>
