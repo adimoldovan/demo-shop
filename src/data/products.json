@@ -28,5 +28,35 @@
         "desc": "Qui veniam laboriosam quia sequi ab. Dolorem eveniet est eveniet. Et quia eius ipsam blanditiis ea voluptatibus. Sequi doloremque inventore autem. Voluptatum est ipsam magnam officiis voluptatum quae quas rem. Odio non aliquam aut autem at omnis in aut ut.",
         "price": 29.99,
         "image_url": "0006.jpg"
+    },
+    {
+        "name": "Awesome Soft Shirt",
+        "desc": "Qui veniam laboriosam quia sequi ab. Dolorem eveniet est eveniet. Et quia eius ipsam blanditiis ea voluptatibus. Sequi doloremque inventore autem. Voluptatum est ipsam magnam officiis voluptatum quae quas rem. Odio non aliquam aut autem at omnis in aut ut.",
+        "price": 29.99,
+        "image_url": "0006.jpg"
+    },
+    {
+        "name": "Practical Wooden Bacon",
+        "desc": "Qui veniam laboriosam quia sequi ab. Dolorem eveniet est eveniet. Et quia eius ipsam blanditiis ea voluptatibus. Sequi doloremque inventore autem. Voluptatum est ipsam magnam officiis voluptatum quae quas rem. Odio non aliquam aut autem at omnis in aut ut.",
+        "price": 1.99,
+        "image_url": "0006.jpg"
+    },
+    {
+        "name": "Practical Metal Mouse",
+        "desc": "Qui veniam laboriosam quia sequi ab. Dolorem eveniet est eveniet. Et quia eius ipsam blanditiis ea voluptatibus. Sequi doloremque inventore autem. Voluptatum est ipsam magnam officiis voluptatum quae quas rem. Odio non aliquam aut autem at omnis in aut ut.",
+        "price": 9.99,
+        "image_url": "0006.jpg"
+    },
+    {
+        "name": "Licensed Steel Gloves",
+        "desc": "Qui veniam laboriosam quia sequi ab. Dolorem eveniet est eveniet. Et quia eius ipsam blanditiis ea voluptatibus. Sequi doloremque inventore autem. Voluptatum est ipsam magnam officiis voluptatum quae quas rem. Odio non aliquam aut autem at omnis in aut ut.",
+        "price": 14.99,
+        "image_url": "0006.jpg"
+    },
+    {
+        "name": "Gorgeous Soft Pizza",
+        "desc": "Qui veniam laboriosam quia sequi ab. Dolorem eveniet est eveniet. Et quia eius ipsam blanditiis ea voluptatibus. Sequi doloremque inventore autem. Voluptatum est ipsam magnam officiis voluptatum quae quas rem. Odio non aliquam aut autem at omnis in aut ut.",
+        "price": 19.99,
+        "image_url": "0006.jpg"
     }
 ]

@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { InventoryData } from '../data/inventory-data.js';
 import { Credentials } from './credentials.jsx';
 import { ShoppingCart } from './shopping-cart.js';
-import CheckoutSummaryItem from './checkout-summary-item.jsx';
+import PageTitle from './page-title.jsx';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 export default class CheckoutSummary extends Component {
   constructor(props) {
@@ -34,26 +37,26 @@ export default class CheckoutSummary extends Component {
 
     return (
       <div>
-        <div className="cart_list">
-          <div className="cart_quantity_label">QTY</div>
-          <div className="cart_desc_label">DESCRIPTION</div>
-          {contents.map((item, i) => {
-            return (<CheckoutSummaryItem key={i} item={InventoryData.ITEMS[item]} />)
-          })}
-        </div>
-        <div className="summary_info">
-          <div className="summary_info_label">Payment Information:</div>
-          <div className="summary_value_label">SauceCard #31337</div>
-          <div className="summary_info_label">Shipping Information:</div>
-          <div className="summary_value_label">FREE PONY EXPRESS DELIVERY!</div>
-          <div className="summary_subtotal_label">Item total: ${orderTotal}</div>
-          <div className="summary_tax_label">Tax: ${orderTax}</div>
-          <div className="summary_total_label">Total: ${(orderTotal + parseFloat(orderTax)).toFixed(2)}</div>
-          <div className="cart_footer">
-            <a className="cart_cancel_link btn_secondary" href="#/products">CANCEL</a>
-            <a className="btn_action cart_button" href="#/checkout-complete" onClick={this.clearCart}>FINISH</a>
-          </div>
-        </div>
+        <PageTitle page_title="Order summary" />
+        <Container>
+          <Row>
+            <Col>
+              <div>Payment Information:</div>
+              <div>Cash on delivery</div>
+              <div>Shipping Information:</div>
+              <div>CHOO CHOO DELIVERY!</div>
+            </Col>
+            <Col>
+              <div>Item total: ${orderTotal}</div>
+              <div>Tax: ${orderTax}</div>
+              <div>Total: ${(orderTotal + parseFloat(orderTax)).toFixed(2)}</div>
+            </Col>
+          </Row>
+          <Row style={{ float: "right", margin: "10px" }} >
+            <Button style={{ marginRight: "10px" }} variant="danger" href="#/cart"><FontAwesomeIcon icon={faAngleLeft} /> Cancel</Button>
+            <Button variant="success" href="#/checkout-complete"><FontAwesomeIcon icon={faAngleRight} /> Complete your order</Button>
+          </Row>
+        </Container>
       </div>
     );
   }

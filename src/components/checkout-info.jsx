@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Credentials } from './credentials.jsx';
+import PageTitle from './page-title.jsx';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleLeft, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 
 export default class CheckoutInfo extends Component {
 
@@ -72,22 +76,30 @@ export default class CheckoutInfo extends Component {
   render() {
 
     return (
-      <div className="checkout_info_wrapper">
-        <form onSubmit={this.handleSubmit}>
-          {
-            this.state.error &&
-            <h3 data-test="error">Error: {this.state.error}</h3>
-          }
-          <div className="checkout_info">
-            <input id="first-name" type="text" className="form_input" data-test="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleFirstNameChange} autoCorrect="off" autoCapitalize="none" />
-            <input id="last-name" type="text" className="form_input" data-test="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleLastNameChange} autoCorrect="off" autoCapitalize="none" />
-            <input id="postal-code" type="text" className="form_input" data-test="postalCode" placeholder="Zip/Postal Code" value={this.state.postalCode} onChange={this.handlePostalCodeChange} autoCorrect="off" autoCapitalize="none" />
-          </div>
-          <div className="checkout_buttons">
-            <a className="cart_cancel_link btn_secondary" href="#/cart">CANCEL</a>
-            <input className="btn_primary cart_button" type="submit" value="CONTINUE" />
-          </div>
-        </form>
+      <div>
+        <PageTitle page_title="Your information" />
+        <Container>
+          <form onSubmit={this.handleSubmit}>
+            <Row xs={1} sm={1} md={1} lg={1} xl={1}>
+              <Col>
+
+                <div className="checkout_form">
+                  {
+                    this.state.error &&
+                    <p className="error" data-test="error"><FontAwesomeIcon icon={faExclamationCircle} /> {this.state.error}</p>
+                  }
+                  <input id="first-name" type="text" className="form_input" data-test="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleFirstNameChange} autoCorrect="off" autoCapitalize="none" />
+                  <input id="last-name" type="text" className="form_input" data-test="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleLastNameChange} autoCorrect="off" autoCapitalize="none" />
+                  <input id="postal-code" type="text" className="form_input" data-test="postalCode" placeholder="Zip/Postal Code" value={this.state.postalCode} onChange={this.handlePostalCodeChange} autoCorrect="off" autoCapitalize="none" />
+                </div>
+              </Col>
+            </Row>
+            <Row style={{ float: "right", margin: "10px" }} >
+              <Button style={{ marginRight: "10px" }} variant="danger" href="#/cart"><FontAwesomeIcon icon={faAngleLeft} /> Cancel</Button>
+              <Button variant="success" type="submit"><FontAwesomeIcon icon={faAngleRight} /> Continue checkout</Button>
+            </Row>
+          </form>
+        </Container>
       </div>
     );
   }

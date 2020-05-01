@@ -1,7 +1,11 @@
-import React from 'react'
-class Contact extends React.Component {
+import React from 'react';
+import PageTitle from './page-title';
+export default class Account extends React.Component {
   render() {
-    return <h1>Account</h1>
+    return (
+      <div>
+        <PageTitle page_title="Account" />
+      </div>
+    )
   }
 }
-export default Contact

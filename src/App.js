@@ -14,12 +14,13 @@ import Cart from './components/cart';
 import CheckoutInfo from './components/checkout-info';
 import CheckoutSummary from './components/checkout-summary';
 import CheckoutComplete from './components/checkout-complete';
+import { Container } from 'react-bootstrap'
 
 
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <Container fluid>
         <AppHeader />
         <HashRouter basename='/demo-shop'>
           <Switch>
@@ -38,7 +39,7 @@ export default class App extends Component {
           </Switch>
         </HashRouter>
         <AppFooter />
-      </div>
+      </Container>
     )
   }
 }

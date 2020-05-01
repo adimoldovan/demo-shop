@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { InventoryData } from '../data/inventory-data';
 import { Credentials } from './credentials';
 import ProductItem from './product-item'
+import PageTitle from './page-title';
+import { Row, Container } from 'react-bootstrap';
 
 export default class Products extends Component {
   constructor(props) {
@@ -111,29 +113,23 @@ export default class Products extends Component {
 
     return (
       <div>
-        <div className="header_secondary_container">
+        <PageTitle page_title="Products" />
+        <Container>
+          <Row>
+            <div className="sort-products-select">Sort products: <select onChange={this.sortByOption}>
+              <option value="az" onClick={this.sortNameAZ}>By name (A to Z)</option>
+              <option value="za" onClick={this.sortNameZA}>By name (Z to A)</option>
+              <option value="lohi" onClick={this.sortPriceLoHi}>By price (low to high)</option>
+              <option value="hilo" onClick={this.sortPriceHiLo}>By price (high to low)</option>
+            </select></div>
+          </Row>
 
-          <div id="searchbox_container"></div>
-          <div id="inventory_filter_container">
-            <div className="product_label">Products</div>
-            <select onChange={this.sortByOption} className="product_sort_container">
-              <option value="az" onClick={this.sortNameAZ}>Name (A to Z)</option>
-              <option value="za" onClick={this.sortNameZA}>Name (Z to A)</option>
-              <option value="lohi" onClick={this.sortPriceLoHi}>Price (low to high)</option>
-              <option value="hilo" onClick={this.sortPriceHiLo}>Price (high to low)</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="inventory_container" className="inventory_container">
-
-          <div className="inventory_list">
+          <Row xs={1} sm={2} md={2} lg={3} xl={4}>
             {this.state.inventoryList.map((item, i) => {
               return (<ProductItem key={item.id} id={item.id} image_url={item.image_url} name={item.name} desc={item.desc} price={item.price} />)
             })}
-          </div>
-
-        </div>
+          </Row>
+        </Container>
       </div>
     );
   }

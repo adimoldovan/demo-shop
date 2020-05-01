@@ -1,6 +1,10 @@
 import React from 'react'
 import { Credentials } from './credentials';
 import { ShoppingCart } from './shopping-cart';
+import { Card, Button, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus, faHeart } from '@fortawesome/free-solid-svg-icons'
+import 'holderjs';
 
 export default class ProductItem extends React.Component {
   constructor(props) {
@@ -35,18 +39,8 @@ export default class ProductItem extends React.Component {
     console.log(ShoppingCart.getCartContents());
   }
 
-  removeFromCart(itemId) {
+  addToWishlist(itemId) {
 
-    if (Credentials.isProblemUser()) {
-      // Bail out now, don't remove from cart if the item ID is even
-      if (itemId % 2 === 0) {
-        return;
-      }
-    }
-
-    ShoppingCart.removeItem(itemId);
-    this.setState({ itemInCart: false });
-    console.log(ShoppingCart.getCartContents());
   }
 
   render() {
@@ -56,25 +50,30 @@ export default class ProductItem extends React.Component {
       linkId += 1;
     }
     var itemLink = `#/product/${linkId}`;
-    var img_url = `./../img/products/${this.state.image_url}`;
+
+    const priceStyle = {
+      fontWeight: "bold",
+      fontSize: "16px"
+    }
+
+    var shortDesc = this.state.desc.substr(0, 50);
+
     return (
-      <div className="inventory_item">
-        <div className="inventory_item_img">
-          <a href={itemLink} id={`item_${this.state.id}_img_link`}>
-            <img className="inventory_item_img" src={img_url} alt={this.state.name} />
-          </a>
-        </div>
-        <div className="inventory_item_label">
-          <a href={itemLink} id={`item_${this.state.id}_title_link`}>
-            <div className="inventory_item_name">{this.state.name}</div>
-          </a>
-          <div className="inventory_item_desc">{this.state.desc}</div>
-        </div>
-        <div className="pricebar">
-          <div className="inventory_item_price">${this.state.price}</div>
-          <button className="btn_primary btn_inventory" onClick={() => this.addToCart(this.state.id)}>ADD TO CART</button>
-        </div>
-      </div>
+      <Col>
+        <Card style={{marginBottom: "20px"}} >
+          <Card.Img top="true" width="100%" data-src="holder.js/100px150" alt={this.state.name} />
+          <Card.Body className="text-center">
+            <Card.Link href={itemLink}>{this.state.name}</Card.Link>
+            <Card.Text>{shortDesc}</Card.Text>
+          </Card.Body>
+          <Card.Footer className="text-muted text-center">
+            <Card.Text>$<span style={priceStyle}>{this.state.price}</span></Card.Text>
+            <Button variant="link" onClick={() => this.addToCart(this.state.id)}><FontAwesomeIcon icon={faCartPlus} size="2x" color="#3aa755e3"/></Button>
+            <Button variant="link" bottom="true" onClick={() => this.addToWishlist(this.state.id)}><FontAwesomeIcon icon={faHeart} size="2x" color="#1551d1e3" /></Button>
+            <Card.Text><small>in stock</small></Card.Text>
+          </Card.Footer>
+        </Card>
+      </Col>
     );
   }
 }
