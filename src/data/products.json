@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Refined Frozen Mouse",
+        "desc": "Vero quia nesciunt laborum velit. Et in ipsum quia harum nihil aliquid officiis. Porro ea officia corporis.",
+        "price": 9.99,
+        "image_url": "0001.jpg"
+    },
+    {
+        "name": "Awesome Granite Chips",
+        "desc": "Omnis excepturi laudantium et minima dignissimos exercitationem. Ut sed rerum fugit repellat. Libero ea reiciendis labore maxime illum consectetur quae alias impedit.",
+        "price": 15.99,
+        "image_url": "0002.jpg"
+    },
+    {
+        "name": "Incredible Concrete Hat",
+        "desc": "Asperiores est error. Eum dicta totam. Aut minima laboriosam reiciendis enim unde voluptatem. Asperiores possimus nobis repellendus molestiae impedit. Eveniet corporis quasi qui quibusdam id repudiandae. Quas quis temporibus vitae hic.",
+        "price": 7.99,
+        "image_url": "0004.jpg"
+    },
+    {
+        "name": "Awesome Metal Chair",
+        "desc": "Adipisci velit optio dolorem minima ex. Dolorem magni dignissimos nemo impedit. Aperiam consequatur nisi. Tempora consequatur sint soluta.",
+        "price": 15.99,
+        "image_url": "0005.jpg"
+    },
+    {
+        "name": "Practical Wooden Bacon",
+        "desc": "Qui veniam laboriosam quia sequi ab. Dolorem eveniet est eveniet. Et quia eius ipsam blanditiis ea voluptatibus. Sequi doloremque inventore autem. Voluptatum est ipsam magnam officiis voluptatum quae quas rem. Odio non aliquam aut autem at omnis in aut ut.",
+        "price": 29.99,
+        "image_url": "0006.jpg"
+    }
+]
