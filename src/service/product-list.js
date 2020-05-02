@@ -1,17 +1,4 @@
 export class ProductList {
-  static addProduct(storageKey, id) {
-    var curContents = ProductList.getCartContents(storageKey);
-
-    if (ProductList.isProductInCart(id)) {
-      var currentQty = curContents[id]
-      curContents[id] = currentQty + 1
-    } else {
-      curContents[id] = 1
-    }
-
-    ProductList.setCartContents(storageKey, curContents);
-  }
-
   static removeProduct(storageKey, id) {
     var curContents = ProductList.getCartContents(storageKey);
 
@@ -23,9 +10,16 @@ export class ProductList {
   }
 
   static increaseQty(storageKey, id) {
+    var curContents = ProductList.getCartContents(storageKey);
+
     if (ProductList.isProductInCart(storageKey, id)) {
-      ProductList.addProduct(storageKey, id);
+      var currentQty = curContents[id]
+      curContents[id] = currentQty + 1
+    } else {
+      curContents[id] = 1
     }
+
+    ProductList.setCartContents(storageKey, curContents);
   }
 
   static decreaseQty(storageKey, id) {
@@ -35,7 +29,7 @@ export class ProductList {
       var currentQty = curContents[id]
       curContents[id] = currentQty - 1
 
-      if (curContents[id] == 0) {
+      if (curContents[id] === 0) {
         delete curContents[id]
       }
     }
@@ -44,7 +38,12 @@ export class ProductList {
 
   static isProductInCart(storageKey, id) {
     var curContents = ProductList.getCartContents(storageKey);
-    return (curContents[id] != undefined);
+    var isInList = false;
+    if (curContents[id] !== undefined) {
+      isInList = true;
+    }
+    // console.log("Product " + id + " already in " + storageKey + ": " + isInList)
+    return isInList;
   }
 
   static getNumberOfProducts(storageKey) {
@@ -53,7 +52,7 @@ export class ProductList {
     Object.keys(curContents).map(function (key) {
       totalQty = totalQty + curContents[key];
     });
-    console.log("Number of products: " + totalQty)
+    // console.log("Products in " + storageKey + ": " + totalQty)
     return totalQty
   }
 

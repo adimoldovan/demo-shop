@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Credentials } from './credentials.jsx';
-import PageTitle from './page-title.jsx';
+import { CredentialsService } from '../service/credentials-service';
+import PageTitle from './page-title';
 import { Container, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
@@ -38,7 +38,7 @@ export default class CheckoutInfo extends Component {
       lastName: evt.target.value,
     };
 
-    if (Credentials.isProblemUser()) {
+    if (CredentialsService.isProblemUser()) {
       // Overwrite the firstname also
       newState.firstName = evt.target.value;
     }

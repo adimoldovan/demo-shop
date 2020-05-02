@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Credentials } from './credentials.jsx';
-import { CartService } from './cart-service.js';
+import { CredentialsService } from '../service/credentials-service';
+import { CartService } from '../service/cart-service';
 import { Row, Button, Col, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
@@ -51,7 +51,7 @@ export default class CartItem extends Component {
 
     if (this.state.itemVisible) {
       var linkId = this.item.id;
-      if (Credentials.isProblemUser()) {
+      if (CredentialsService.isProblemUser()) {
         linkId += 1;
       }
       var itemLink = `#product/${linkId}`;

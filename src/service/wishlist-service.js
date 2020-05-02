@@ -5,7 +5,10 @@ const CART_KEY = 'wishlist-contents';
 
 export class WishlistService {
   static addProduct(id) {
-    ProductList.addProduct(CART_KEY, id)
+    // only add the product if not already in the list
+    if (!ProductList.isProductInCart(CART_KEY, id)) {
+      ProductList.increaseQty(CART_KEY, id)
+    }
     ProductList.notify(WishlistService.LISTENERS)
   }
 

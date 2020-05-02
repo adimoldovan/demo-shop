@@ -3,7 +3,7 @@ import './css/App.css';
 import { Route, Switch, HashRouter } from 'react-router-dom';
 import Products from './components/products'
 import Product from './components/product'
-import Contact from './components/contact'
+import Help from './components/help'
 import Login from './components/login'
 import Notfound from './components/notfound'
 import AppHeader from './components/app-header'
@@ -28,7 +28,7 @@ export default class App extends Component {
             <Route path={'/login'} component={Login} />
             <Route path={'/products'} component={Products} />
             <Route path={'/product/:id'} component={Product} />
-            <Route path={'/contact'} component={Contact} />
+            <Route path={'/help'} component={Help} />
             <Route path={'/account'} component={Account} />
             <Route path={'/wishlist'} component={Wishlist} />
             <Route path={'/cart'} component={Cart} />

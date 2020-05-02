@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import '../css/login.css';
-import { Credentials } from './credentials.jsx';
+import { CredentialsService } from '../service/credentials-service';
+import { Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationCircle, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 class Login extends Component {
     constructor(props) {
@@ -27,13 +29,11 @@ class Login extends Component {
             return this.setState({ error: 'Please fill in the password!' });
         }
 
-        if (Credentials.verifyCredentials(this.state.username, this.state.password)) {
-            if (Credentials.isLockedOutUser()) {
+        if (CredentialsService.verifyCredentials(this.state.username, this.state.password)) {
+            if (CredentialsService.isLockedOutUser(this.state.username)) {
                 return this.setState({ error: 'The user has been locked out.' });
             }
-
-            // If we're here, we have a username and password. Redirect!
-            window.location.href = './products';
+            window.location.href = '#/products';
         } else {
             return this.setState({ error: 'Incorrect username or password!' });
         }
@@ -60,13 +60,13 @@ class Login extends Component {
                     <form onSubmit={this.handleSubmit}>
                         {
                             this.state.error &&
-                            <p class="error" data-test="error">{this.state.error}</p>
+                            <p className="error" data-test="error"><FontAwesomeIcon icon={faExclamationCircle} /> {this.state.error}</p>
                         }
                         <input type="text" className="form_input" data-test="username" id="user-name" placeholder="Username"
                             value={this.state.username} onChange={this.handleUserChange} autoCorrect="off" autoCapitalize="none" />
                         <input type="password" className="form_input" data-test="password" id="password" placeholder="Password"
                             value={this.state.password} onChange={this.handlePassChange} autoCorrect="off" autoCapitalize="none" />
-                        <input type="submit" className="btn_action" value="LOGIN" />
+                        <Button variant="primary" type="submit"><FontAwesomeIcon icon={faSignInAlt} /> Login</Button>
                     </form>
                 </div></div>
         );

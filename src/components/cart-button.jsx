@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { CartService } from './cart-service.js';
+import { CartService } from '../service/cart-service.js';
 
 export default class CartButton extends Component {
   constructor(props) {
@@ -10,7 +10,6 @@ export default class CartButton extends Component {
   }
 
   render() {
-
     var cartBadge = "";
     var noOfProducts = CartService.getNumberOfProducts();
 

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { InventoryData } from '../data/inventory-data';
-import { Credentials } from './credentials';
+import { InventoryService } from '../service/inventory-service';
+import { CredentialsService } from '../service/credentials-service';
 import ProductItem from './product-item'
 import PageTitle from './page-title';
-import { Row, Container, Form, FormControl, Button, Col } from 'react-bootstrap';
+import { Row, Container, Form, Button, Col } from 'react-bootstrap';
 
 export default class Products extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      inventoryList: InventoryData.ITEMS_NAME_AZ
+      inventoryList: InventoryService.ITEMS_NAME_AZ
     };
 
     this.sortByOption = this.sortByOption.bind(this);
@@ -24,7 +24,7 @@ export default class Products extends Component {
 
     console.log(event);
 
-    if (Credentials.isProblemUser()) {
+    if (CredentialsService.isProblemUser()) {
       // Bail out now if we're problem user so that we have a behaviour which is broken in Chrome only for sort.
       // select option onclick is not supported in Chrome but works in IE and FF
       return;
@@ -34,74 +34,80 @@ export default class Products extends Component {
       case "az":
 
         this.setState({
-          inventoryList: InventoryData.ITEMS_NAME_AZ
+          inventoryList: InventoryService.ITEMS_NAME_AZ
         });
         break;
 
       case "za":
 
         this.setState({
-          inventoryList: InventoryData.ITEMS_NAME_ZA
+          inventoryList: InventoryService.ITEMS_NAME_ZA
         });
         break;
 
       case "hilo":
 
         this.setState({
-          inventoryList: InventoryData.ITEMS_PRICE_HILO
+          inventoryList: InventoryService.ITEMS_PRICE_HILO
         });
         break;
 
       case "lohi":
 
         this.setState({
-          inventoryList: InventoryData.ITEMS_PRICE_LOHI
+          inventoryList: InventoryService.ITEMS_PRICE_LOHI
+        });
+        break;
+
+      default:
+        this.setState({
+          inventoryList: InventoryService.ITEMS_NAME_AZ
         });
         break;
     }
   }
 
   sortNameAZ() {
-    if (!Credentials.isProblemUser()) {
+    if (!CredentialsService.isProblemUser()) {
       // Bail out now if we're not problem user - the select onchange will handle the sort
       return;
     }
 
     this.setState({
-      inventoryList: InventoryData.ITEMS_NAME_AZ
+      inventoryList: InventoryService.ITEMS_NAME_AZ
     });
   }
 
   sortNameZA() {
-    if (!Credentials.isProblemUser()) {
+    if (!CredentialsService.isProblemUser()) {
       // Bail out now if we're not problem user - the select onchange will handle the sort
       return;
     }
 
     this.setState({
-      inventoryList: InventoryData.ITEMS_NAME_ZA
+      inventoryList: InventoryService.ITEMS_NAME_ZA
     });
   }
 
   sortPriceLoHi() {
-    if (!Credentials.isProblemUser()) {
+    if (!CredentialsService.isProblemUser()) {
       // Bail out now if we're not problem user - the select onchange will handle the sort
       return;
     }
 
     this.setState({
-      inventoryList: InventoryData.ITEMS_PRICE_LOHI
+      inventoryList: InventoryService.ITEMS_PRICE_LOHI
     });
   }
 
   sortPriceHiLo() {
-    if (!Credentials.isProblemUser()) {
+    if (!CredentialsService.isProblemUser()) {
       // Bail out now if we're not problem user - the select onchange will handle the sort
       return;
     }
 
     this.setState({
-      inventoryList: InventoryData.ITEMS_PRICE_HILO
+      inventoryList: InventoryService.ITEMS_PRICE_HILO
     });
   }
 
@@ -112,9 +118,9 @@ export default class Products extends Component {
         <Container>
           <Row className="justify-content-end">
             <Form inline>
-            <Col md="auto">
+              <Col md="auto">
                 <Form.Control size="sm" type="text" placeholder="Search" className="mr-auto" />
-                <Button size="sm" variant="light" style={{marginLeft: "5px"}}>Search</Button>
+                <Button size="sm" variant="light" style={{ marginLeft: "5px" }}>Search</Button>
               </Col>
 
               <Col md="auto">
@@ -128,8 +134,8 @@ export default class Products extends Component {
             </Form>
           </Row>
           <Row xs={1} sm={2} md={2} lg={3} xl={4}>
-            {this.state.inventoryList.map((item, i) => {
-              return (<ProductItem key={item.id} id={item.id} image_url={item.image_url} name={item.name} desc={item.desc} price={item.price} />)
+            {this.state.inventoryList.map((item) => {
+              return (<ProductItem key={item.id} id={item.id} isWishlist={false} />)
             })}
           </Row>
         </Container>

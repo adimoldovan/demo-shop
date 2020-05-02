@@ -1,7 +1,12 @@
 import React from 'react'
-class NotFound extends React.Component {
+import PageTitle from './page-title';
+
+export default class NotFound extends React.Component {
   render() {
-    return <h1>Uups! Page not found!</h1>
+    return (
+      <div>
+        <PageTitle page_title="Whoops! Content not found!" />
+      </div>
+    )
   }
 }
-export default NotFound

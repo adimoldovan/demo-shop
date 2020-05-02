@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { WishlistService } from './wishlist-service.js';
+import { WishlistService } from '../service/wishlist-service.js';
 
 export default class WishlistButton extends Component {
   constructor(props) {

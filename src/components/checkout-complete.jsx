@@ -1,9 +1,9 @@
 import React from 'react'
-import PageTitle from './page-title.jsx';
+import PageTitle from './page-title';
 import { Container, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
-import { CartService } from './cart-service.js';
+import { CartService } from '../service/cart-service';
 
 
 export default class CheckoutComplete extends React.Component {

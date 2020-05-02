@@ -1,9 +1,10 @@
 import React from 'react'
-import { Navbar, Nav, NavDropdown, Container, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import CartButton from './cart-button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSignOutAlt, faList, faUserEdit, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import WishlistButton from './wishlist-button';
+import UserButton from './user-button';
 
 export default class AppHeader extends React.Component {
   render() {
@@ -11,7 +12,6 @@ export default class AppHeader extends React.Component {
       <Container>
         <Navbar collapseOnSelect expand="sm" bg="light" variant="light" sticky="top" className="justify-content-between">
           <Navbar.Brand href={`${process.env.PUBLIC_URL}/`}><FontAwesomeIcon icon={faShoppingBag} size="3x" className="brand-logo" /></Navbar.Brand>
-          
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto" />
@@ -19,13 +19,8 @@ export default class AppHeader extends React.Component {
               <Navbar.Text>
                 <CartButton />
                 <WishlistButton />
+                <UserButton />
               </Navbar.Text>
-              <NavDropdown title={<FontAwesomeIcon icon={faUser} />} id="collasible-nav-dropdown" drop="left">
-                <NavDropdown.Item href="#/account">{<FontAwesomeIcon icon={faUserEdit} />} My account</NavDropdown.Item>
-                <NavDropdown.Item href="#/wishlist">{<FontAwesomeIcon icon={faList} />} Wishlist</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#/logout">{<FontAwesomeIcon icon={faSignOutAlt} />} Logout</NavDropdown.Item>
-              </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

@@ -1,35 +1,21 @@
 import React, { Component } from 'react';
-import { InventoryData } from '../data/inventory-data.js';
-import { Credentials } from './credentials.jsx';
-import { CartService } from './cart-service.js';
-import PageTitle from './page-title.jsx';
+import { InventoryService } from '../service/inventory-service';
+import { CredentialsService } from '../service/credentials-service';
+import { CartService } from '../service/cart-service';
+import PageTitle from './page-title';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 export default class CheckoutSummary extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  clearCart() {
-    // No cart clear on order complete for the problem user
-    if (!Credentials.isProblemUser()) {
-      // Wipe out our shopping cart
-      CartService.resetCart();
-    }
-  }
-
   render() {
-
     var products = CartService.getCartContents();
     var orderTotal = 0;
 
     for (var productId in products) {
-      orderTotal = orderTotal + InventoryData.ITEMS[productId].price;
-      if (Credentials.isProblemUser()) {
-        // double up for the problem user
-        orderTotal = orderTotal + InventoryData.ITEMS[productId].price;
+      orderTotal = orderTotal + InventoryService.ITEMS[productId].price;
+      if (CredentialsService.isProblemUser()) {
+        orderTotal = orderTotal + InventoryService.ITEMS[productId].price;
       }
     }
 

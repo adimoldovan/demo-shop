@@ -20,6 +20,7 @@ export default class PageTitle extends React.Component {
                 <small className="text-muted">{this.state.title}</small>
               </h1>
             </div>
+            <hr/>
           </Col>
         </Row>
       </Container>
