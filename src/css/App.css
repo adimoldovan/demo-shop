@@ -76,5 +76,6 @@ input {
 }
 
 .amount-total {
+    border-top: 1px solid #f5f5f5;
     font-size: 1.3em;
 }

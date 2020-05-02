@@ -66,8 +66,16 @@ export default class CartItem extends Component {
                 <Button variant="link" onClick={() => this.increaseQty()}><FontAwesomeIcon icon={faPlusCircle} style={{ color: "grey" }} /></Button>
               </div>
             </Col>
-            <Col md="auto" style={{ marginTop: "7px" }}>${this.item.price}</Col>
-            <Col md="auto" style={{ marginTop: "7px" }}>${this.totalPrice}</Col>
+            <Col md="auto" style={{ marginTop: "7px" }}>
+              <div style={{ width: "100px" }}>
+                ${this.item.price}
+              </div>
+            </Col>
+            <Col md="auto" style={{ marginTop: "7px" }}>
+              <div style={{ width: "100px" }}>
+                ${this.totalPrice}
+              </div>
+            </Col>
             <Col style={{ marginTop: "7px" }}><a href={itemLink} id={`item_${this.item.id}_title_link`}>{this.item.name}</a></Col>
             <Col md="auto"><Button variant="link" onClick={() => this.removeFromCart()}><FontAwesomeIcon icon={faTrash} /></Button></Col>
           </Row>

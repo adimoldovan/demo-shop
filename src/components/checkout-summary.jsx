@@ -6,21 +6,11 @@ import PageTitle from './page-title';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import CartAmount from './cart-amount';
+
 
 export default class CheckoutSummary extends Component {
   render() {
-    var products = CartService.getCartContents();
-    var orderTotal = 0;
-
-    for (var productId in products) {
-      orderTotal = orderTotal + InventoryService.ITEMS[productId].price;
-      if (CredentialsService.isProblemUser()) {
-        orderTotal = orderTotal + InventoryService.ITEMS[productId].price;
-      }
-    }
-
-    var orderTax = (orderTotal * 0.05).toFixed(2);
-
     return (
       <div>
         <PageTitle page_title="Order summary" />
@@ -33,9 +23,7 @@ export default class CheckoutSummary extends Component {
               <div>CHOO CHOO DELIVERY!</div>
             </Col>
             <Col>
-              <div> Items total: <span className="amount">${orderTotal}</span></div>
-              <div>Taxes: <span className="amount">${orderTax}</span></div>
-              <div className="amount-total">Total: <span className="amount">${(orderTotal + parseFloat(orderTax)).toFixed(2)}</span></div>
+              <CartAmount/>
             </Col>
           </Row>
 
