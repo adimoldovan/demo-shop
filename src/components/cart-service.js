@@ -1,39 +1,39 @@
 const CART_KEY = 'cart-contents';
 
-export class ShoppingCart {
+export class CartService {
   static addProduct(id) {
-    var curContents = ShoppingCart.getCartContents();
+    var curContents = CartService.getCartContents();
 
-    if (ShoppingCart.isProductInCart(id)) {
+    if (CartService.isProductInCart(id)) {
       var currentQty = curContents[id]
       curContents[id] = currentQty + 1
     } else {
       curContents[id] = 1
     }
 
-    ShoppingCart.setCartContents(curContents);
+    CartService.setCartContents(curContents);
   }
 
   static removeProduct(id) {
-    var curContents = ShoppingCart.getCartContents();
+    var curContents = CartService.getCartContents();
 
-    if (ShoppingCart.isProductInCart(id)) {
+    if (CartService.isProductInCart(id)) {
       delete curContents[id]
     }
 
-    ShoppingCart.setCartContents(curContents);
+    CartService.setCartContents(curContents);
   }
 
   static increaseQty(id) {
-    if (ShoppingCart.isProductInCart(id)) {
-      ShoppingCart.addProduct(id);
+    if (CartService.isProductInCart(id)) {
+      CartService.addProduct(id);
     }
   }
 
   static decreaseQty(id) {
-    var curContents = ShoppingCart.getCartContents();
+    var curContents = CartService.getCartContents();
 
-    if (ShoppingCart.isProductInCart(id)) {
+    if (CartService.isProductInCart(id)) {
       var currentQty = curContents[id]
       curContents[id] = currentQty - 1
 
@@ -41,16 +41,16 @@ export class ShoppingCart {
         delete curContents[id]
       }
     }
-    ShoppingCart.setCartContents(curContents);
+    CartService.setCartContents(curContents);
   }
 
   static isProductInCart(id) {
-    var curContents = ShoppingCart.getCartContents();
+    var curContents = CartService.getCartContents();
     return (curContents[id] != undefined);
   }
 
   static getNumberOfProducts() {
-    var curContents = ShoppingCart.getCartContents();
+    var curContents = CartService.getCartContents();
     var totalQty = 0;
     Object.keys(curContents).map(function (key) {
       totalQty = totalQty + curContents[key];
@@ -60,9 +60,9 @@ export class ShoppingCart {
   }
 
   static getItemQuantity(id) {
-    var curContents = ShoppingCart.getCartContents();
+    var curContents = CartService.getCartContents();
     var qty = 0;
-    if (ShoppingCart.isProductInCart(id)) {
+    if (CartService.isProductInCart(id)) {
       qty = curContents[id];
     }
 
@@ -86,7 +86,7 @@ export class ShoppingCart {
     window.sessionStorage.setItem(CART_KEY, JSON.stringify(newContents));
 
     // Notify our listeners
-    ShoppingCart.LISTENERS.forEach((curListener) => {
+    CartService.LISTENERS.forEach((curListener) => {
       curListener.forceUpdate();
     });
   }
@@ -95,14 +95,14 @@ export class ShoppingCart {
     window.sessionStorage.removeItem(CART_KEY);
 
     // Notify our listeners
-    ShoppingCart.LISTENERS.forEach((curListener) => {
+    CartService.LISTENERS.forEach((curListener) => {
       curListener.forceUpdate();
     });
   }
 
   static registerCartListener(handler) {
-    ShoppingCart.LISTENERS.push(handler);
+    CartService.LISTENERS.push(handler);
   }
 }
 
-ShoppingCart.LISTENERS = [];
+CartService.LISTENERS = [];

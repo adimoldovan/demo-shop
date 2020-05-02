@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { InventoryData } from '../data/inventory-data.js';
-import { ShoppingCart } from './shopping-cart.js';
+import { CartService } from './cart-service.js';
 import CartItem from './cart-item.jsx';
 import PageTitle from './page-title.jsx';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
-
 
 
 export default class Cart extends Component {
@@ -15,7 +14,7 @@ export default class Cart extends Component {
   }
 
   render() {
-    var products = ShoppingCart.getCartContents();
+    var products = CartService.getCartContents();
     var orderTotal = 0;
 
     for (var productId in products) {

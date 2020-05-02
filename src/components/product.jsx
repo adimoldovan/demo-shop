@@ -1,7 +1,7 @@
 import React from 'react'
 import { InventoryData } from '../data/inventory-data';
 import { Credentials } from './credentials';
-import { ShoppingCart } from './shopping-cart';
+import { CartService } from './cart-service';
 import PageTitle from './page-title';
 import 'holderjs';
 import { Row, Container, Col, Button, Image } from 'react-bootstrap';
@@ -29,7 +29,7 @@ export default class Product extends React.Component {
 
     this.state = {
       // Set our initial state now
-      itemInCart: ShoppingCart.isProductInCart(this.item.id)
+      itemInCart: CartService.isProductInCart(this.item.id)
     };
   }
 
@@ -41,7 +41,7 @@ export default class Product extends React.Component {
       }
     }
 
-    ShoppingCart.addProduct(this.item.id);
+    CartService.addProduct(this.item.id);
   }
 
   addToWishlist() {
@@ -60,7 +60,7 @@ export default class Product extends React.Component {
         <Container>
           <Row>
             <Col className="col col-lg-4">
-            <Image src="holder.js/100px250" />
+              <Image src="holder.js/100px250" />
             </Col>
             <Col>
               <p>{this.item.desc}</p>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { InventoryData } from '../data/inventory-data.js';
 import { Credentials } from './credentials.jsx';
-import { ShoppingCart } from './shopping-cart.js';
+import { CartService } from './cart-service.js';
 import PageTitle from './page-title.jsx';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,13 +16,13 @@ export default class CheckoutSummary extends Component {
     // No cart clear on order complete for the problem user
     if (!Credentials.isProblemUser()) {
       // Wipe out our shopping cart
-      ShoppingCart.resetCart();
+      CartService.resetCart();
     }
   }
 
   render() {
 
-    var products = ShoppingCart.getCartContents();
+    var products = CartService.getCartContents();
     var orderTotal = 0;
 
     for (var productId in products) {
@@ -52,10 +52,11 @@ export default class CheckoutSummary extends Component {
               <div className="amount-total">Total: <span className="amount">${(orderTotal + parseFloat(orderTax)).toFixed(2)}</span></div>
             </Col>
           </Row>
-          <Row style={{ float: "right", margin: "10px" }} >
+
+          <div style={{ textAlign: "right", margin: "10px" }}  >
             <Button style={{ marginRight: "10px" }} variant="danger" href="#/cart"><FontAwesomeIcon icon={faAngleLeft} /> Cancel</Button>
             <Button variant="success" href="#/checkout-complete"><FontAwesomeIcon icon={faAngleRight} /> Complete your order</Button>
-          </Row>
+          </div>
         </Container>
       </div >
     );

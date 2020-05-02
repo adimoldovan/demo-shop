@@ -3,7 +3,7 @@ import { InventoryData } from '../data/inventory-data';
 import { Credentials } from './credentials';
 import ProductItem from './product-item'
 import PageTitle from './page-title';
-import { Row, Container } from 'react-bootstrap';
+import { Row, Container, Form, FormControl, Button, Col } from 'react-bootstrap';
 
 export default class Products extends Component {
   constructor(props) {
@@ -106,24 +106,27 @@ export default class Products extends Component {
   }
 
   render() {
-
-    // NOTE: Sorting is broken on Chrome and Safari
-    // https://stackoverflow.com/questions/9972280/onclick-on-option-tag-not-working-on-ie-and-chrome/10058960#10058960
-    // TODO: Convert this in to a case for problem_user
-
     return (
       <div>
         <PageTitle page_title="Products" />
         <Container>
-          <Row>
-            <div className="sort-products-select">Sort products: <select onChange={this.sortByOption}>
-              <option value="az" onClick={this.sortNameAZ}>By name (A to Z)</option>
-              <option value="za" onClick={this.sortNameZA}>By name (Z to A)</option>
-              <option value="lohi" onClick={this.sortPriceLoHi}>By price (low to high)</option>
-              <option value="hilo" onClick={this.sortPriceHiLo}>By price (high to low)</option>
-            </select></div>
-          </Row>
+          <Row className="justify-content-end">
+            <Form inline>
+            <Col md="auto">
+                <Form.Control size="sm" type="text" placeholder="Search" className="mr-auto" />
+                <Button size="sm" variant="light" style={{marginLeft: "5px"}}>Search</Button>
+              </Col>
 
+              <Col md="auto">
+                <Form.Control className="sort-products-select" size="sm" as="select" onChange={this.sortByOption}>
+                  <option value="az" onClick={this.sortNameAZ}>Sort by name (A to Z)</option>
+                  <option value="za" onClick={this.sortNameZA}>Sort by name (Z to A)</option>
+                  <option value="lohi" onClick={this.sortPriceLoHi}>Sort by price (low to high)</option>
+                  <option value="hilo" onClick={this.sortPriceHiLo}>Sort by price (high to low)</option>
+                </Form.Control>
+              </Col>
+            </Form>
+          </Row>
           <Row xs={1} sm={2} md={2} lg={3} xl={4}>
             {this.state.inventoryList.map((item, i) => {
               return (<ProductItem key={item.id} id={item.id} image_url={item.image_url} name={item.name} desc={item.desc} price={item.price} />)

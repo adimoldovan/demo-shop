@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { ShoppingCart } from './shopping-cart.js';
+import { CartService } from './cart-service.js';
 
 export default class CartButton extends Component {
   constructor(props) {
     super(props);
-    ShoppingCart.registerCartListener(this);
+    CartService.registerCartListener(this);
   }
 
   render() {
 
     var cartBadge = "";
-    var noOfProducts = ShoppingCart.getNumberOfProducts();
+    var noOfProducts = CartService.getNumberOfProducts();
 
     if (noOfProducts > 0) {
       cartBadge = <span className="fa-layers-counter shopping_cart_badge">{noOfProducts}</span>;

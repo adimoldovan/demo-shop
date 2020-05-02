@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Credentials } from './credentials.jsx';
-import { ShoppingCart } from './shopping-cart.js';
+import { CartService } from './cart-service.js';
 import { Row, Button, Col, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
@@ -10,7 +10,7 @@ export default class CartItem extends Component {
 
   constructor(props) {
     super(props);
-    ShoppingCart.registerCartListener(this);
+    CartService.registerCartListener(this);
 
     this.item = props.item;
     this.state = {
@@ -25,28 +25,28 @@ export default class CartItem extends Component {
   }
 
   removeFromCart() {
-    ShoppingCart.removeProduct(this.item.id);
+    CartService.removeProduct(this.item.id);
     this.setState({ itemVisible: false });
   }
 
   increaseQty() {
-    ShoppingCart.increaseQty(this.item.id);
+    CartService.increaseQty(this.item.id);
   }
 
   decreaseQty() {
-    ShoppingCart.decreaseQty(this.item.id);
-    if (ShoppingCart.getItemQuantity(this.item.id) < 1) {
+    CartService.decreaseQty(this.item.id);
+    if (CartService.getItemQuantity(this.item.id) < 1) {
       this.setState({ itemVisible: false });
     }
   }
 
   calculateProductPrice() {
-    return (this.item.price * ShoppingCart.getItemQuantity(this.item.id)).toFixed(2);
+    return (this.item.price * CartService.getItemQuantity(this.item.id)).toFixed(2);
   }
 
 
   render() {
-    var itemQty = ShoppingCart.getItemQuantity(this.item.id);
+    var itemQty = CartService.getItemQuantity(this.item.id);
     this.totalPrice = this.calculateProductPrice()
 
     if (this.state.itemVisible) {
