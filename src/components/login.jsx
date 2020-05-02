@@ -13,6 +13,8 @@ class Login extends Component {
             error: ''
         };
 
+        this.listener = props.listener;
+
         this.handlePassChange = this.handlePassChange.bind(this);
         this.handleUserChange = this.handleUserChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,6 +40,7 @@ class Login extends Component {
             return this.setState({ error: 'Incorrect username or password!' });
         }
 
+        this.listener.setModalShow(false);
         return '';
     }
 
