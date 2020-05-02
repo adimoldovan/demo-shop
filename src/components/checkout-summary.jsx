@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { InventoryService } from '../service/inventory-service';
-import { CredentialsService } from '../service/credentials-service';
-import { CartService } from '../service/cart-service';
 import PageTitle from './page-title';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

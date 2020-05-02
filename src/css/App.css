@@ -56,15 +56,8 @@ input {
     font-size: 18px;
     width: 100%;
     border: 0px;
-    border-bottom: 1px solid #ccc;
     outline: none;
     padding: 10px 0;
-}
-
-.checkout_form {
-    max-width: 380px;
-    margin: 0 auto;
-    padding-top: 30px;
 }
 
 .error {
@@ -78,4 +71,13 @@ input {
 .amount-total {
     border-top: 1px solid #f5f5f5;
     font-size: 1.3em;
+}
+
+.section-title {
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }

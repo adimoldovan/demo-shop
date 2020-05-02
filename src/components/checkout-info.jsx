@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { CredentialsService } from '../service/credentials-service';
 import PageTitle from './page-title';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, Row, Col, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 
@@ -78,26 +78,45 @@ export default class CheckoutInfo extends Component {
     return (
       <div>
         <PageTitle page_title="Your information" />
-        <Container>
-          <form onSubmit={this.handleSubmit}>
-            
+        <Form onSubmit={this.handleSubmit}>
+          <Container>
 
-                <div className="checkout_form">
+            <Row className="justify-content-between">
+              <Col>
+                <div className="section-title">Address information</div>
+                <div>
                   {
                     this.state.error &&
                     <p className="error" data-test="error"><FontAwesomeIcon icon={faExclamationCircle} /> {this.state.error}</p>
                   }
-                  <input id="first-name" type="text" className="form_input" data-test="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleFirstNameChange} autoCorrect="off" autoCapitalize="none" />
-                  <input id="last-name" type="text" className="form_input" data-test="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleLastNameChange} autoCorrect="off" autoCapitalize="none" />
-                  <input id="postal-code" type="text" className="form_input" data-test="postalCode" placeholder="Zip/Postal Code" value={this.state.postalCode} onChange={this.handlePostalCodeChange} autoCorrect="off" autoCapitalize="none" />
+                  <Form.Control id="first-name" type="text" className="form_input" data-test="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleFirstNameChange} autoCorrect="off" autoCapitalize="none" />
+                  <Form.Control id="last-name" type="text" className="form_input" data-test="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleLastNameChange} autoCorrect="off" autoCapitalize="none" />
+                  <Form.Control id="postal-code" type="text" className="form_input" data-test="postalCode" placeholder="Zip/Postal Code" value={this.state.postalCode} onChange={this.handlePostalCodeChange} autoCorrect="off" autoCapitalize="none" />
                 </div>
-              
+              </Col>
+              <Col>
+                <div className="section-title">Delivery information</div>
+                <div>
+                  <Form.Check type="radio" label={`Choo Choo delivery`} />
+                </div>
+                <div className="section-title">Payment information</div>
+                <div>
+                  <Form.Check type="radio" data-test="delivery-type" label={`Cash on delivery`} checked>
+                  </Form.Check>
+                  <Form.Check type="radio" data-test="delivery-type" label={`Credit card`} disabled>
+                  </Form.Check>
+                  <Form.Check type="radio" data-test="delivery-type" label={`PayPal`} disabled>
+                  </Form.Check>
+                </div>
+              </Col>
+            </Row>
             <div style={{ textAlign: "right", margin: "10px" }} >
               <Button style={{ marginRight: "10px" }} variant="danger" href="#/cart"><FontAwesomeIcon icon={faAngleLeft} /> Cancel</Button>
               <Button variant="success" type="submit"><FontAwesomeIcon icon={faAngleRight} /> Continue checkout</Button>
             </div>
-          </form>
-        </Container>
+
+          </Container>
+        </Form>
       </div>
     );
   }

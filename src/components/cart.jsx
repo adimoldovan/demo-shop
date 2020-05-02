@@ -9,6 +9,10 @@ import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import CartAmount from './cart-amount';
 
 export default class Cart extends Component {
+  constructor(props) {
+    super(props);
+    CartService.registerCartListener(this);
+  }
   render() {
     var products = CartService.getCartContents();
     var content = <Container>
@@ -26,8 +30,8 @@ export default class Cart extends Component {
       </div>
     </Container>
 
-    if (products.length < 1) {
-      content = <span>How about adding some products in your cart?</span>
+    if (CartService.getNumberOfProducts() < 1) {
+      content = <Container className="text-center">How about adding some products in your cart?</Container>
     }
 
     return (
