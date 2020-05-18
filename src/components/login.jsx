@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CredentialsService } from '../service/credentials-service';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -60,17 +60,17 @@ class Login extends Component {
         return (
             <div className="login_wrapper">
                 <div>
-                    <form onSubmit={this.handleSubmit}>
+                    <Form onSubmit={this.handleSubmit}>
                         {
                             this.state.error &&
                             <p className="error" data-test="error"><FontAwesomeIcon icon={faExclamationCircle} /> {this.state.error}</p>
                         }
-                        <input type="text" className="form_input" data-test="username" id="user-name" placeholder="Username"
+                        <Form.Control type="text" className="form_input" data-test="username" id="user-name" placeholder="Username"
                             value={this.state.username} onChange={this.handleUserChange} autoCorrect="off" autoCapitalize="none" />
-                        <input type="password" className="form_input" data-test="password" id="password" placeholder="Password"
+                        <Form.Control type="password" className="form_input" data-test="password" id="password" placeholder="Password"
                             value={this.state.password} onChange={this.handlePassChange} autoCorrect="off" autoCapitalize="none" />
                         <Button variant="primary" type="submit"><FontAwesomeIcon icon={faSignInAlt} /> Login</Button>
-                    </form>
+                    </Form>
                 </div></div>
         );
     }
