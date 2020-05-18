@@ -25,5 +25,5 @@ docker run --name demo-shop -p 9100:80 demo-shop
 
 ```sh
 npm install
-npm run deploy
+PUBLIC_URL=http://your-github-pages-url npm run deploy
 ```
