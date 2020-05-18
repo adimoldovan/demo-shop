@@ -38,13 +38,6 @@ html {
     margin: 10px;
 }
 
-input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 0;
-}
-
 .form_input {
     margin: 0 0 25px 0;
     font-size: 18px;

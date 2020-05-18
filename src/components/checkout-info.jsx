@@ -64,7 +64,7 @@ export default class CheckoutInfo extends Component {
     }
 
     if (!this.state.postalCode) {
-      return this.setState({ error: 'Postal Code is required' });
+      return this.setState({ error: 'Address is required' });
     }
 
     // If we're here, we have our required info. Redirect!
@@ -91,21 +91,21 @@ export default class CheckoutInfo extends Component {
                   }
                   <Form.Control id="first-name" type="text" className="form_input" data-test="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleFirstNameChange} autoCorrect="off" autoCapitalize="none" />
                   <Form.Control id="last-name" type="text" className="form_input" data-test="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleLastNameChange} autoCorrect="off" autoCapitalize="none" />
-                  <Form.Control id="postal-code" type="text" className="form_input" data-test="postalCode" placeholder="Zip/Postal Code" value={this.state.postalCode} onChange={this.handlePostalCodeChange} autoCorrect="off" autoCapitalize="none" />
+                  <Form.Control id="address" as="textarea" className="form_input" data-test="address" placeholder="Address" value={this.state.postalCode} onChange={this.handlePostalCodeChange} autoCorrect="off" autoCapitalize="none" />
                 </div>
               </Col>
               <Col>
                 <div className="section-title">Delivery information</div>
                 <div>
-                  <Form.Check type="radio" label={`Choo Choo delivery`} />
+                  <Form.Check type="radio" data-test="delivery-type" label={`Choo Choo delivery`} checked/>
                 </div>
                 <div className="section-title">Payment information</div>
                 <div>
-                  <Form.Check type="radio" data-test="delivery-type" label={`Cash on delivery`} checked>
+                  <Form.Check type="radio" data-test="payment-type" label={`Cash on delivery`} checked>
                   </Form.Check>
-                  <Form.Check type="radio" data-test="delivery-type" label={`Credit card`} disabled>
+                  <Form.Check type="radio" data-test="payment-type" label={`Credit card`} disabled>
                   </Form.Check>
-                  <Form.Check type="radio" data-test="delivery-type" label={`PayPal`} disabled>
+                  <Form.Check type="radio" data-test="payment-type" label={`PayPal`} disabled>
                   </Form.Check>
                 </div>
               </Col>
