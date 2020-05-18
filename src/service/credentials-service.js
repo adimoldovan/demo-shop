@@ -55,7 +55,7 @@ export class CredentialsService {
 const STORAGE_KEY = "session-username"
 
 const NORMAL_USER = "dino"
-const BUGGY_USER = "buggy"
+const BUGGY_USER = "beetle"
 const SLOW_USER = "turtle"
 const LOCKER_OUT_USER = "locked"
 
