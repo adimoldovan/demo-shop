@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  deploy-gh-pages:
+    docker:
+      - image: circleci/node
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "e0:f9:1a:8f:15:f1:9a:59:d4:4d:f6:46:3e:82:5e:7e"
+      - checkout
+      - run:
+          name: "Deploy to GH pages"
+          command: |
+            npm install
+            npm run deploy
+
+workflows:
+  commit:
+    jobs:
+      - deploy-gh-pages:
+          filters:
+            branches:
+              only:
+                - master
