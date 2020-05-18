@@ -49,7 +49,7 @@ export class ProductList {
   static getNumberOfProducts(storageKey) {
     var curContents = ProductList.getCartContents(storageKey);
     var totalQty = 0;
-    Object.keys(curContents).map(function (key) {
+    Object.keys(curContents).forEach(function (key) {
       totalQty = totalQty + curContents[key];
     });
     // console.log("Products in " + storageKey + ": " + totalQty)

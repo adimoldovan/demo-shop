@@ -14,9 +14,11 @@ export default class CartAmount extends Component {
     var orderTotal = 0;
 
     for (var productId in products) {
-      orderTotal = (orderTotal + InventoryService.ITEMS[productId].price * products[productId]).toFixed(2);
+      var unitPrice = InventoryService.ITEMS[productId].price
+      var qty = products[productId]
+      orderTotal = parseFloat((orderTotal + unitPrice * qty)).toFixed(2);
     }
-    var orderTax = (orderTotal * 0.19).toFixed(2);
+    var orderTax = parseFloat((orderTotal * 0.05)).toFixed(2);
 
     return (
       <div style={{ textAlign: "right", margin: "10px" }} className="d-flex justify-content-between">

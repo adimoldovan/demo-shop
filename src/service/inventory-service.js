@@ -3,7 +3,7 @@ export class InventoryService {}
 
 InventoryService.ITEMS = productsData;
 
-InventoryService.ITEMS.map((item, i) => {
+InventoryService.ITEMS.forEach((item, i) => {
   // Dynamically map our item IDs based on their positions in the item array
   item.id = i;
 });
