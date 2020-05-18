@@ -13,7 +13,7 @@ jobs:
           name: "Deploy to GH pages"
           command: |
             npm install
-            npm run deploy
+            PUBLIC_URL=https://adimoldovan.github.io/demo-shop npm run deploy
 
 workflows:
   commit:
