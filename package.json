@@ -29,7 +29,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "copy-ci-config": "copyfiles .circleci/* build",
+    "deploy": "npm run copy-ci-config && gh-pages -d build -t -u 'CD Pipeline <cd@trashmail.com>'"
   },
   "eslintConfig": {
     "extends": "react-app"
