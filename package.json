@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "copyfiles": "^2.2.0",
     "gh-pages": "^2.2.0"
   }
 }
