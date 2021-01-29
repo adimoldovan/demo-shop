@@ -20,3 +20,8 @@ InventoryService.ITEMS_PRICE_LOHI = InventoryService.ITEMS.slice().sort(function
 });
 
 InventoryService.ITEMS_PRICE_HILO = InventoryService.ITEMS_PRICE_LOHI.slice().reverse();
+
+InventoryService.ITEMS_FILTER = InventoryService.ITEMS.filter(function(item) {
+        return item.name.includes("Awesome")
+    }
+);
