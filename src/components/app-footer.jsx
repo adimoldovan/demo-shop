@@ -32,7 +32,7 @@ export default class AppFooter extends React.Component {
           <Navbar>
             <Nav>
               <Nav.Item>
-                <Nav.Link href="#/">2020 Demo Shop</Nav.Link>
+                <Nav.Link href={`${process.env.PUBLIC_URL}/`}>Demo Shop</Nav.Link>
               </Nav.Item>
             </Nav>
           </Navbar>
