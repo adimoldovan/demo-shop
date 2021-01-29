@@ -2,8 +2,6 @@
 
 Simple e-commerce app built for test automation practice. Built with React.
 
-## Deploy URLs
-
 | Github pages | Heroku |
 | --- | --- |
 | [![Github pages status](https://img.shields.io/website?down_color=grey&down_message=Offline&style=for-the-badge&up_color=green&up_message=Online&url=https%3A%2F%2Fadimoldovan.github.io%2Fdemo-shop%2F%23%2F)](https://adimoldovan.github.io/demo-shop) | [![Heroku status](https://img.shields.io/website?down_color=grey&down_message=Offline&style=for-the-badge&up_color=green&up_message=Online&url=https%3A%2F%2Ftau-demo-shop.herokuapp.com)](https://tau-demo-shop.herokuapp.com) |
