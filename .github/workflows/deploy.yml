@@ -1,4 +1,4 @@
-name: Push build to gh-pages branch
+name: Build and push to static branches
 
 on:
   push:

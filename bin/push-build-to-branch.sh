@@ -55,3 +55,5 @@ else
 fi
 
 echo "$LOG_PREFIX Done"
+
+cd "$REPO_ROOT"
