@@ -40,10 +40,9 @@ jobs:
           yarn install --frozen-lockfile
           PUBLIC_URL=https://tau-demo-shop.herokuapp.com yarn run build
           cd build
-          touch composer.json
-          touch index.php
-          echo "<?php include_once("index.html"); ?>" >> index.php
-          echo "{}" >> composer.json
+          echo '{}' > composer.json
+          echo '<?php include_once("home.html"); ?>' > index.php
+          mv index.html home.html
       - name: Push to Heroku branch
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
