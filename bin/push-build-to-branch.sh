@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-LOG_PREFIX="Deploy to Github Pages:"
+LOG_PREFIX="Deploy script: "
 echo "$LOG_PREFIX Checking prerequisites"
 
 if [ -z "$TARGET_BRANCH" ]; then
