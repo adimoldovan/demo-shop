@@ -28,8 +28,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "copy-ci-config": "copyfiles .circleci/* build",
-    "deploy": "npm run copy-ci-config && gh-pages -d build -t -u 'CD Pipeline <cd@trashmail.com>'"
+    "copy-circle-config": "copyfiles .circleci_disabled/* build",
+    "deploy": "npm run copy-circle-config && gh-pages -d build -t -u 'CD Pipeline <cd@trashmail.com>'"
   },
   "eslintConfig": {
     "extends": "react-app"

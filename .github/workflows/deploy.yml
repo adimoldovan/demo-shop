@@ -1,0 +1,39 @@
+name: Push build to gh-pages branch
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-push-to-static-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 12
+      - name: Build for Github pages
+        run: |
+          yarn install --frozen-lockfile
+          PUBLIC_URL=https://adimoldovan.github.io/demo-shop yarn run build
+      - name: Push to Github pages branch
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EMAIL: "github-actions-bot-noreply@noreply"
+          USERNAME: "github-actions-bot"
+          TARGET_BRANCH: "gh-pages"
+        run: sh bin/push-build-to-branch.sh
+      - name: Build for Heroku
+        run: |
+          yarn install --frozen-lockfile
+          PUBLIC_URL=https://tau-demo-shop.herokuapp.com yarn run build
+      - name: Push to Heroku branch
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EMAIL: "github-actions-bot-noreply@noreply"
+          USERNAME: "github-actions-bot"
+          TARGET_BRANCH: "heroku"
+        run: sh bin/push-build-to-branch.sh
