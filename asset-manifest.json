@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "https://tau-demo-shop.herokuapp.com/static/css/main.ac3d476f.chunk.css",
-    "main.js": "https://tau-demo-shop.herokuapp.com/static/js/main.6fab4991.chunk.js",
-    "main.js.map": "https://tau-demo-shop.herokuapp.com/static/js/main.6fab4991.chunk.js.map",
-    "runtime-main.js": "https://tau-demo-shop.herokuapp.com/static/js/runtime-main.c382d4b9.js",
-    "runtime-main.js.map": "https://tau-demo-shop.herokuapp.com/static/js/runtime-main.c382d4b9.js.map",
-    "static/css/2.150d169a.chunk.css": "https://tau-demo-shop.herokuapp.com/static/css/2.150d169a.chunk.css",
-    "static/js/2.907f166a.chunk.js": "https://tau-demo-shop.herokuapp.com/static/js/2.907f166a.chunk.js",
-    "static/js/2.907f166a.chunk.js.map": "https://tau-demo-shop.herokuapp.com/static/js/2.907f166a.chunk.js.map",
+    "main.js": "https://tau-demo-shop.herokuapp.com/static/js/main.fb0b6a79.chunk.js",
+    "main.js.map": "https://tau-demo-shop.herokuapp.com/static/js/main.fb0b6a79.chunk.js.map",
+    "runtime-main.js": "https://tau-demo-shop.herokuapp.com/static/js/runtime-main.d6ee97cd.js",
+    "runtime-main.js.map": "https://tau-demo-shop.herokuapp.com/static/js/runtime-main.d6ee97cd.js.map",
+    "static/css/2.bd932d36.chunk.css": "https://tau-demo-shop.herokuapp.com/static/css/2.bd932d36.chunk.css",
+    "static/js/2.9a422a1a.chunk.js": "https://tau-demo-shop.herokuapp.com/static/js/2.9a422a1a.chunk.js",
+    "static/js/2.9a422a1a.chunk.js.map": "https://tau-demo-shop.herokuapp.com/static/js/2.9a422a1a.chunk.js.map",
     "index.html": "https://tau-demo-shop.herokuapp.com/index.html",
-    "static/css/2.150d169a.chunk.css.map": "https://tau-demo-shop.herokuapp.com/static/css/2.150d169a.chunk.css.map",
+    "static/css/2.bd932d36.chunk.css.map": "https://tau-demo-shop.herokuapp.com/static/css/2.bd932d36.chunk.css.map",
     "static/css/main.ac3d476f.chunk.css.map": "https://tau-demo-shop.herokuapp.com/static/css/main.ac3d476f.chunk.css.map",
-    "static/js/2.907f166a.chunk.js.LICENSE.txt": "https://tau-demo-shop.herokuapp.com/static/js/2.907f166a.chunk.js.LICENSE.txt"
+    "static/js/2.9a422a1a.chunk.js.LICENSE.txt": "https://tau-demo-shop.herokuapp.com/static/js/2.9a422a1a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c382d4b9.js",
-    "static/css/2.150d169a.chunk.css",
-    "static/js/2.907f166a.chunk.js",
+    "static/js/runtime-main.d6ee97cd.js",
+    "static/css/2.bd932d36.chunk.css",
+    "static/js/2.9a422a1a.chunk.js",
     "static/css/main.ac3d476f.chunk.css",
-    "static/js/main.6fab4991.chunk.js"
+    "static/js/main.fb0b6a79.chunk.js"
   ]
 }
