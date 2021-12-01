@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "https://adimoldovan.github.io/demo-shop/static/css/main.ac3d476f.chunk.css",
-    "main.js": "https://adimoldovan.github.io/demo-shop/static/js/main.ed04ba1f.chunk.js",
-    "main.js.map": "https://adimoldovan.github.io/demo-shop/static/js/main.ed04ba1f.chunk.js.map",
-    "runtime-main.js": "https://adimoldovan.github.io/demo-shop/static/js/runtime-main.0f84154d.js",
-    "runtime-main.js.map": "https://adimoldovan.github.io/demo-shop/static/js/runtime-main.0f84154d.js.map",
-    "static/css/2.150d169a.chunk.css": "https://adimoldovan.github.io/demo-shop/static/css/2.150d169a.chunk.css",
-    "static/js/2.907f166a.chunk.js": "https://adimoldovan.github.io/demo-shop/static/js/2.907f166a.chunk.js",
-    "static/js/2.907f166a.chunk.js.map": "https://adimoldovan.github.io/demo-shop/static/js/2.907f166a.chunk.js.map",
+    "main.js": "https://adimoldovan.github.io/demo-shop/static/js/main.d57078f7.chunk.js",
+    "main.js.map": "https://adimoldovan.github.io/demo-shop/static/js/main.d57078f7.chunk.js.map",
+    "runtime-main.js": "https://adimoldovan.github.io/demo-shop/static/js/runtime-main.b58b5e59.js",
+    "runtime-main.js.map": "https://adimoldovan.github.io/demo-shop/static/js/runtime-main.b58b5e59.js.map",
+    "static/css/2.bd932d36.chunk.css": "https://adimoldovan.github.io/demo-shop/static/css/2.bd932d36.chunk.css",
+    "static/js/2.9a422a1a.chunk.js": "https://adimoldovan.github.io/demo-shop/static/js/2.9a422a1a.chunk.js",
+    "static/js/2.9a422a1a.chunk.js.map": "https://adimoldovan.github.io/demo-shop/static/js/2.9a422a1a.chunk.js.map",
     "index.html": "https://adimoldovan.github.io/demo-shop/index.html",
-    "static/css/2.150d169a.chunk.css.map": "https://adimoldovan.github.io/demo-shop/static/css/2.150d169a.chunk.css.map",
+    "static/css/2.bd932d36.chunk.css.map": "https://adimoldovan.github.io/demo-shop/static/css/2.bd932d36.chunk.css.map",
     "static/css/main.ac3d476f.chunk.css.map": "https://adimoldovan.github.io/demo-shop/static/css/main.ac3d476f.chunk.css.map",
-    "static/js/2.907f166a.chunk.js.LICENSE.txt": "https://adimoldovan.github.io/demo-shop/static/js/2.907f166a.chunk.js.LICENSE.txt"
+    "static/js/2.9a422a1a.chunk.js.LICENSE.txt": "https://adimoldovan.github.io/demo-shop/static/js/2.9a422a1a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0f84154d.js",
-    "static/css/2.150d169a.chunk.css",
-    "static/js/2.907f166a.chunk.js",
+    "static/js/runtime-main.b58b5e59.js",
+    "static/css/2.bd932d36.chunk.css",
+    "static/js/2.9a422a1a.chunk.js",
     "static/css/main.ac3d476f.chunk.css",
-    "static/js/main.ed04ba1f.chunk.js"
+    "static/js/main.d57078f7.chunk.js"
   ]
 }
