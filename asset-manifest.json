@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://tau-demo-shop.herokuapp.com/static/css/main.ad86cbaf.chunk.css",
-    "main.js": "https://tau-demo-shop.herokuapp.com/static/js/main.b069e322.chunk.js",
-    "main.js.map": "https://tau-demo-shop.herokuapp.com/static/js/main.b069e322.chunk.js.map",
+    "main.js": "https://tau-demo-shop.herokuapp.com/static/js/main.b1990417.chunk.js",
+    "main.js.map": "https://tau-demo-shop.herokuapp.com/static/js/main.b1990417.chunk.js.map",
     "runtime-main.js": "https://tau-demo-shop.herokuapp.com/static/js/runtime-main.a28d759e.js",
     "runtime-main.js.map": "https://tau-demo-shop.herokuapp.com/static/js/runtime-main.a28d759e.js.map",
     "static/css/2.d6008dad.chunk.css": "https://tau-demo-shop.herokuapp.com/static/css/2.d6008dad.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.d6008dad.chunk.css",
     "static/js/2.33f8e1c7.chunk.js",
     "static/css/main.ad86cbaf.chunk.css",
-    "static/js/main.b069e322.chunk.js"
+    "static/js/main.b1990417.chunk.js"
   ]
 }
