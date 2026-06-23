@@ -8,8 +8,9 @@ const buildDate = new Date()
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Served from https://adimoldovan.github.io/demo-shop/
-  base: '/demo-shop/',
+  // Defaults to the GitHub Pages project path; override with VITE_BASE=/
+  // for deployments served from the domain root (e.g. the Docker image).
+  base: process.env.VITE_BASE ?? '/demo-shop/',
   plugins: [react()],
   define: {
     __BUILD_DATE__: JSON.stringify(buildDate),

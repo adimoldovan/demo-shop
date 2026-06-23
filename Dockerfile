@@ -1,9 +1,10 @@
-FROM node:16-alpine3.13 as build
+FROM node:22-alpine AS build
 WORKDIR /app
-COPY package*.json /app/
-RUN npm install
-COPY . /app/
-RUN npm run build
+COPY package*.json ./
+RUN npm ci
+COPY . .
+# nginx serves the app from the domain root, so build with base "/".
+RUN VITE_BASE=/ npm run build
 
 FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
