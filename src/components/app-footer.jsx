@@ -5,7 +5,6 @@ import {faUndo, faQuestion} from '@fortawesome/free-solid-svg-icons'
 import {WishlistService} from '../service/wishlist-service';
 import {CartService} from '../service/cart-service';
 import {CredentialsService} from '../service/credentials-service';
-import appVersion from '../data/app-version.json'
 
 export default class AppFooter extends React.Component {
     constructor(props) {
@@ -33,8 +32,8 @@ export default class AppFooter extends React.Component {
                     <Navbar>
                         <Nav>
                             <Nav.Item>
-                                <Nav.Link href={`${process.env.PUBLIC_URL}/`}>Demo Shop |
-                                    build date {appVersion.buildDate}</Nav.Link>
+                                <Nav.Link href={import.meta.env.BASE_URL}>Demo Shop |
+                                    build date {__BUILD_DATE__}</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar>

@@ -4,7 +4,6 @@ import { CartService } from '../service/cart-service';
 import { Row, Button, Col, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
-import "holderjs";
 
 export default class CartItem extends Component {
 

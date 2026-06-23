@@ -1,72 +1,52 @@
-name: Build and push to static branches
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - master
+  workflow_dispatch:
+
+# Allow the workflow to publish to GitHub Pages via the Pages deployment API.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment, skipping runs queued between the run
+# in-progress and the latest queued.
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  build-and-push-to-gh-pages:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.2
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 12
-      - name: Build for Github pages
-        run: |
-          yarn install --frozen-lockfile
-          PUBLIC_URL=https://adimoldovan.github.io/demo-shop yarn run build
-      - name: Push to Github pages branch
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          EMAIL: "github-actions-bot-noreply@noreply"
-          USERNAME: "github-actions-bot"
-          TARGET_BRANCH: "gh-pages"
-        run: sh bin/push-build-to-branch.sh
-  build-and-push-to-heroku:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.2
-        with:
-          node-version: 12
-      - name: Build for Heroku
-        run: |
-          yarn install --frozen-lockfile
-          PUBLIC_URL=https://tau-demo-shop.herokuapp.com yarn run build
-          cd build
-          echo '{}' > composer.json
-          echo '<?php include_once("home.html"); ?>' > index.php
-          mv index.html home.html
-      - name: Push to Heroku branch
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          EMAIL: "github-actions-bot-noreply@noreply"
-          USERNAME: "github-actions-bot"
-          TARGET_BRANCH: "heroku"
-        run: sh bin/push-build-to-branch.sh
-  build-and-push-to-static:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.2
-        with:
-          node-version: 12
-      - name: Build for Heroku
-        run: |
-          yarn install --frozen-lockfile
-          yarn run build
-      - name: Push to static branch
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          EMAIL: "github-actions-bot-noreply@noreply"
-          USERNAME: "github-actions-bot"
-          TARGET_BRANCH: "static"
-        run: sh bin/push-build-to-branch.sh
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

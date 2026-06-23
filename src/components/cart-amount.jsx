@@ -24,7 +24,7 @@ export default class CartAmount extends Component {
       <div style={{ textAlign: "right", margin: "10px" }} className="d-flex justify-content-between">
         <div></div>
         <div>
-          <table className="text-right">
+          <table className="text-end">
             <tbody>
               <tr>
                 <td>Items total:</td>

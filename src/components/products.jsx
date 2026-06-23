@@ -127,10 +127,10 @@ export default class Products extends Component {
                 <PageTitle page_title="Products"/>
                 <Container>
                     <Row className="justify-content-end">
-                        <Form inline>
+                        <Form className="d-flex">
                             <Col md="auto">
                                 <Form.Control size="sm" type="text" placeholder="Search" id="input-search"
-                                              className="mr-auto" value={this.state.searchTerm}
+                                              className="me-auto" value={this.state.searchTerm}
                                               onChange={e => this.updateSearchTerm(e)}/>
                                 <Button size="sm" variant="light" style={{marginLeft: "5px"}}
                                         onClick={() => this.search()}>Search</Button>

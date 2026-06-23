@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import { Route, Switch, HashRouter } from 'react-router-dom';
+import { Route, Routes, HashRouter } from 'react-router-dom';
 import Products from './components/products'
 import Product from './components/product'
 import Help from './components/help'
@@ -22,21 +22,21 @@ export default class App extends Component {
     return (
       <Container fluid>
         <AppHeader />
-        <HashRouter basename='/demo-shop'>
-          <Switch>
-            <Route exact path={'/'} component={Products} />
-            <Route path={'/login'} component={Login} />
-            <Route path={'/products'} component={Products} />
-            <Route path={'/product/:id'} component={Product} />
-            <Route path={'/help'} component={Help} />
-            <Route path={'/account'} component={Account} />
-            <Route path={'/wishlist'} component={Wishlist} />
-            <Route path={'/cart'} component={Cart} />
-            <Route path={'/checkout-info'} component={CheckoutInfo} />
-            <Route path={'/checkout-summary'} component={CheckoutSummary} />
-            <Route path={'/checkout-complete'} component={CheckoutComplete} />
-            <Route component={Notfound} />
-          </Switch>
+        <HashRouter>
+          <Routes>
+            <Route path={'/'} element={<Products />} />
+            <Route path={'/login'} element={<Login />} />
+            <Route path={'/products'} element={<Products />} />
+            <Route path={'/product/:id'} element={<Product />} />
+            <Route path={'/help'} element={<Help />} />
+            <Route path={'/account'} element={<Account />} />
+            <Route path={'/wishlist'} element={<Wishlist />} />
+            <Route path={'/cart'} element={<Cart />} />
+            <Route path={'/checkout-info'} element={<CheckoutInfo />} />
+            <Route path={'/checkout-summary'} element={<CheckoutSummary />} />
+            <Route path={'/checkout-complete'} element={<CheckoutComplete />} />
+            <Route path={'*'} element={<Notfound />} />
+          </Routes>
         </HashRouter>
         <AppFooter />
       </Container>

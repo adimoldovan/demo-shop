@@ -6,8 +6,7 @@ import {Card, Button, Col} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCartPlus, faHeart, faHeartBroken} from '@fortawesome/free-solid-svg-icons'
 import {InventoryService} from '../service/inventory-service';
-import 'holderjs';
-import * as Holder from "holderjs";
+import {placeholderImage} from '../util/placeholder';
 
 export default class ProductItem extends React.Component {
     constructor(props) {
@@ -44,11 +43,6 @@ export default class ProductItem extends React.Component {
     }
 
     render() {
-        Holder.addTheme("dark", {
-            bg: "#969494",
-            fg: "#ffffff", text: "Thumbnail"
-        });
-
         let itemLink = `#/product/${this.state.product.id}`;
 
         const priceStyle = {
@@ -70,7 +64,7 @@ export default class ProductItem extends React.Component {
             <Col>
                 <Card style={{marginBottom: "20px"}}>
                     <Card.Img top="true" width="100%"
-                              data-src={"holder.js/100px150?theme=dark&text=" + this.state.product.name + " product photo"}
+                              src={placeholderImage(this.state.product.name + " product photo")}
                               alt={this.state.product.name}/>
                     <Card.Body className="text-center">
                         <Card.Link href={itemLink}>{this.state.product.name}</Card.Link>

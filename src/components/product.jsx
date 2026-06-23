@@ -3,17 +3,17 @@ import {InventoryService} from '../service/inventory-service';
 import {WishlistService} from '../service/wishlist-service';
 import {CartService} from '../service/cart-service';
 import PageTitle from './page-title';
-import 'holderjs';
+import {useParams} from 'react-router-dom';
 import {Row, Container, Col, Button, Image} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCartPlus, faHeart, faHeartBroken} from '@fortawesome/free-solid-svg-icons'
-import * as Holder from "holderjs";
+import {placeholderImage} from '../util/placeholder';
 
 
-export default class Product extends React.Component {
+class Product extends React.Component {
     constructor(props) {
         super(props);
-        const {params} = this.props.match
+        const {params} = this.props
 
         if ((params.id >= 0) && (InventoryService.ITEMS.length > params.id)) {
             this.item = InventoryService.ITEMS[params.id];
@@ -30,12 +30,6 @@ export default class Product extends React.Component {
         this.state = {
             itemInWishlist: WishlistService.isProductInCart(this.item.id)
         };
-    }
-
-    componentDidMount() {
-        Holder.run({
-            images: ".product-image"
-        })
     }
 
     addToCart() {
@@ -72,7 +66,7 @@ export default class Product extends React.Component {
                 <Container>
                     <Row>
                         <Col className="col col-lg-4">
-                            <Image className="product-image" data-src={"holder.js/100px150?random=yes&text=" + this.item.name + " product photo"}/>
+                            <Image className="product-image" src={placeholderImage(this.item.name + " product photo")} alt={this.item.name}/>
                         </Col>
                         <Col>
                             <p>{this.item.desc}</p>
@@ -90,4 +84,10 @@ export default class Product extends React.Component {
             </div>
         );
     }
+}
+
+// React Router v7 exposes route params via a hook; wrap the class component
+// so it keeps receiving `params` as a prop.
+export default function ProductRoute(props) {
+    return <Product {...props} params={useParams()} />;
 }

@@ -11,10 +11,10 @@ export default class AppHeader extends React.Component {
     return (
       <Container>
         <Navbar collapseOnSelect expand="sm" bg="light" variant="light" sticky="top" className="justify-content-between">
-          <Navbar.Brand href={`${process.env.PUBLIC_URL}/`}><FontAwesomeIcon icon={faShoppingBag} size="3x" className="brand-logo" /></Navbar.Brand>
+          <Navbar.Brand href={import.meta.env.BASE_URL}><FontAwesomeIcon icon={faShoppingBag} size="3x" className="brand-logo" /></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto" />
+            <Nav className="me-auto" />
             <Nav>
               <Navbar.Text>
                 <CartButton />
